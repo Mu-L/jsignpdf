@@ -1,6 +1,6 @@
 # JSignPdf website
 
-The JSignPdf project website at <https://intoolswetrust.github.io/jsignpdf/>,
+The JSignPdf project website at <https://jsignpdf.eu/>,
 built with [Hugo](https://gohugo.io/) and the
 [Hextra](https://imfing.github.io/hextra/) theme.
 

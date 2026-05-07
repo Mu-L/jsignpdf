@@ -215,7 +215,7 @@ $installerArgs = @(
     '--copyright','Josef Cacek',
     '--description','JSignPdf adds digital signatures to PDF documents',
     '--license-file',(Join-Path $root 'distribution/licenses/MPL-2.0.txt'),
-    '--about-url','https://intoolswetrust.github.io/jsignpdf/',
+    '--about-url','https://jsignpdf.eu/',
     '--win-menu',
     '--win-menu-group','JSignPdf',
     '--win-shortcut',

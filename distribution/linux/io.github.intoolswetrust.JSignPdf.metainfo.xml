@@ -22,7 +22,7 @@
     </ul>
   </description>
   <launchable type="desktop-id">io.github.intoolswetrust.JSignPdf.desktop</launchable>
-  <url type="homepage">https://intoolswetrust.github.io/jsignpdf/</url>
+  <url type="homepage">https://jsignpdf.eu/</url>
   <url type="bugtracker">https://github.com/intoolswetrust/jsignpdf/issues</url>
   <url type="vcs-browser">https://github.com/intoolswetrust/jsignpdf</url>
   <branding>
@@ -45,16 +45,16 @@
   </releases>
   <screenshots>
     <screenshot type="default">
-      <image>https://intoolswetrust.github.io/jsignpdf/img/screenshots/jsignpdf-screenshot.png</image>
+      <image>https://jsignpdf.eu/img/screenshots/jsignpdf-javafx-main.png</image>
       <caption>JSignPdf main window</caption>
     </screenshot>
     <screenshot>
-      <image>https://intoolswetrust.github.io/jsignpdf/img/screenshots/jsignpdf-screenshot-2.png</image>
-      <caption>JSignPdf visible signature settings</caption>
+      <image>https://jsignpdf.eu/img/screenshots/jsignpdf-javafx-signed.png</image>
+      <caption>JSignPdf - signing completed</caption>
     </screenshot>
     <screenshot>
-      <image>https://intoolswetrust.github.io/jsignpdf/img/screenshots/jsignpdf-screenshot-3.png</image>
-      <caption>JSignPdf main window - advanced view</caption>
+      <image>https://jsignpdf.eu/img/screenshots/jsignpdf-javafx-visible-sig.png</image>
+      <caption>JSignPdf - placing visible signature</caption>
     </screenshot>
   </screenshots>
   <recommends>
