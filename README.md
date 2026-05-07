@@ -11,7 +11,7 @@ It supports both software keystores (PKCS#12) and hardware tokens / smartcards (
 RFC 3161 timestamping (TSA), OCSP and CRL embedding for long-term validation (LTV),
 drag-to-place visible signatures, and a scriptable command-line / batch mode.
 
-Project home page: [intoolswetrust.github.io/jsignpdf](https://intoolswetrust.github.io/jsignpdf/)
+Project home page: [jsignpdf.eu](https://jsignpdf.eu/)
 
 ![JSignPdf JavaFX UI](https://raw.githubusercontent.com/intoolswetrust/jsignpdf/master/website/static/img/screenshots/jsignpdf-javafx-main.png)
 
@@ -41,7 +41,7 @@ Maven-Central-published artifacts (for embedding the signing engine in your own 
 
 ## Documentation
 
-- User guide: <https://intoolswetrust.github.io/jsignpdf/>
+- User guide: <https://jsignpdf.eu/docs/>
 - Release notes: [`distribution/doc/release-notes/`](distribution/doc/release-notes/)
 - Developer / architecture guide: [AGENTS.md](AGENTS.md)
 - Design notes: [`design-doc/`](design-doc/)
