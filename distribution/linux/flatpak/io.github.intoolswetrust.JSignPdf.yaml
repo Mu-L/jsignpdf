@@ -37,7 +37,7 @@ modules:
         path: jsignpdf.png
     build-commands:
       - mkdir -p ${FLATPAK_DEST}/share/jsignpdf
-      - cp -r JSignPdf.jar InstallCert.jar conf licenses ${FLATPAK_DEST}/share/jsignpdf/
+      - cp -r JSignPdf.jar InstallCert.jar licenses ${FLATPAK_DEST}/share/jsignpdf/
       - install -Dm755 jsignpdf-flatpak.in ${FLATPAK_DEST}/bin/jsignpdf
       - install -Dm644 jsignpdf.desktop ${FLATPAK_DEST}/share/applications/io.github.intoolswetrust.JSignPdf.desktop
       - install -Dm644 io.github.intoolswetrust.JSignPdf.metainfo.xml ${FLATPAK_DEST}/share/metainfo/io.github.intoolswetrust.JSignPdf.metainfo.xml
