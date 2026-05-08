@@ -84,7 +84,7 @@ toc: false
       Desktop application
     </h3>
     <p>Launch the Java GUI, pick a keystore, drop a PDF in and click Sign. Switch to the advanced view when you need timestamps, certification levels or visible signatures.</p>
-    <a class="jsp-way-link" href="docs/#launching">Start with the GUI →</a>
+    <a class="jsp-way-link" href="docs/#using-the-javafx-ui">Start with the GUI →</a>
   </div>
 
   <div class="jsp-way">
