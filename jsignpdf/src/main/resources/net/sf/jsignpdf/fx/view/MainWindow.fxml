@@ -57,6 +57,8 @@
                             <Image url="@/net/sf/jsignpdf/signedpdf16.png"/>
                         </ImageView></graphic>
                     </MenuItem>
+                    <MenuItem fx:id="menuTimestamp" text="%jfx.gui.menu.signing.timestamp"
+                              onAction="#onTimestamp" accelerator="Shortcut+T"/>
                 </Menu>
                 <Menu text="%jfx.gui.menu.presets">
                     <MenuItem fx:id="menuSavePresetAsNew" text="%jfx.gui.menu.presets.saveAsNew"
@@ -140,6 +142,15 @@
                     <graphic><ImageView fitWidth="26" fitHeight="26" preserveRatio="true">
                         <Image url="@/net/sf/jsignpdf/signedpdf26.png"/>
                     </ImageView></graphic>
+                </Button>
+                <Button fx:id="btnTimestamp" text="%jfx.gui.toolbar.timestamp" onAction="#onTimestamp"
+                        styleClass="toolbar-button">
+                    <graphic><ImageView fitWidth="26" fitHeight="26" preserveRatio="true">
+                        <Image url="@/net/sf/jsignpdf/clock26.png"/>
+                    </ImageView></graphic>
+                    <tooltip>
+                        <Tooltip text="%jfx.gui.toolbar.timestamp.tooltip"/>
+                    </tooltip>
                 </Button>
             </ToolBar>
         </VBox>

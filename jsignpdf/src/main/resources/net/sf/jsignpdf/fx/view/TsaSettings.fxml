@@ -15,12 +15,12 @@
     </padding>
 
     <!-- TSA Section -->
+    <Label text="%jfx.gui.tsa.serverUrl"/>
+    <TextField fx:id="txtTsaUrl"/>
+
     <CheckBox fx:id="chkTsaEnabled" text="%jfx.gui.tsa.enableTimestamp"/>
 
     <VBox fx:id="tsaDetailsPane" spacing="6">
-        <Label text="%jfx.gui.tsa.serverUrl"/>
-        <TextField fx:id="txtTsaUrl"/>
-
         <Label text="%jfx.gui.tsa.authentication"/>
         <ComboBox fx:id="cmbTsaAuthn" maxWidth="Infinity"/>
 
