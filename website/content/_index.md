@@ -49,11 +49,15 @@ toc: false
   {{< hextra/feature-card
       icon="eye"
       title="Visible signatures"
-      subtitle="Place a signature block on any page with a custom image and text layout." >}}
+      subtitle="Place a signature block on any page with a custom image and text layout, and watch it render live on the page preview as you move and resize it." >}}
+  {{< hextra/feature-card
+      icon="template"
+      title="Existing signature fields"
+      subtitle="Sign into the signature box the document author already placed, instead of stacking a new field on top of it." >}}
   {{< hextra/feature-card
       icon="clock"
       title="Timestamps & revocation"
-      subtitle="TSA support plus CRL and OCSP revocation checks built in." >}}
+      subtitle="TSA support plus CRL and OCSP revocation checks built in — or add a document timestamp to a PDF without signing it at all." >}}
   {{< hextra/feature-card
       icon="shield-check"
       title="Certification levels"
@@ -113,5 +117,5 @@ toc: false
     </svg>
     Download from GitHub Releases
   </a>
-  <small>Binaries and installers for every platform</small>
+  <small>Binaries and installers for every platform — see <a href="releases/">what changed</a></small>
 </div>

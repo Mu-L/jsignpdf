@@ -69,8 +69,12 @@ hasCJKLanguage    = false
     pageRef  = "/quickstart"
     weight   = 3
   [[menu.main]]
-    name     = "GitHub"
+    name     = "Releases"
+    pageRef  = "/releases"
     weight   = 4
+  [[menu.main]]
+    name     = "GitHub"
+    weight   = 5
     url      = "https://github.com/intoolswetrust/jsignpdf"
     [menu.main.params]
       icon = "github"
@@ -101,4 +105,4 @@ hasCJKLanguage    = false
 
   [params.editURL]
     enable = true
-    base   = "https://github.com/intoolswetrust/jsignpdf/edit/master/website-hugo/content"
+    base   = "https://github.com/intoolswetrust/jsignpdf/edit/master/website/content"

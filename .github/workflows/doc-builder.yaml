@@ -6,6 +6,7 @@ on:
       - master
     paths:
       - 'website/**'
+      - 'distribution/doc/release-notes/**'
       - '.github/workflows/doc-builder.yaml'
   release:
     types: [published]
