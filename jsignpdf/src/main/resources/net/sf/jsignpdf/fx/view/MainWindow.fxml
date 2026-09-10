@@ -58,7 +58,11 @@
                         </ImageView></graphic>
                     </MenuItem>
                     <MenuItem fx:id="menuTimestamp" text="%jfx.gui.menu.signing.timestamp"
-                              onAction="#onTimestamp" accelerator="Shortcut+T"/>
+                              onAction="#onTimestamp" accelerator="Shortcut+T">
+                        <graphic><ImageView fitWidth="16" fitHeight="16" preserveRatio="true">
+                            <Image url="@/net/sf/jsignpdf/timestamp16.png"/>
+                        </ImageView></graphic>
+                    </MenuItem>
                 </Menu>
                 <Menu text="%jfx.gui.menu.presets">
                     <MenuItem fx:id="menuSavePresetAsNew" text="%jfx.gui.menu.presets.saveAsNew"
@@ -75,8 +79,10 @@
                 </Menu>
             </MenuBar>
 
-            <!-- Toolbar -->
-            <ToolBar styleClass="main-toolbar">
+            <!-- Toolbar: the left bar collapses into an overflow menu when space is tight;
+                 the trailing bar keeps the primary Sign / Timestamp actions always visible. -->
+            <HBox styleClass="main-toolbar-row">
+            <ToolBar styleClass="main-toolbar" HBox.hgrow="ALWAYS" maxWidth="Infinity">
                 <Button fx:id="btnOpen" text="%jfx.gui.toolbar.open" onAction="#onFileOpen"
                         styleClass="toolbar-button">
                     <graphic><ImageView fitWidth="16" fitHeight="16" preserveRatio="true">
@@ -136,7 +142,9 @@
                         <Tooltip text="%jfx.gui.preset.tooltip"/>
                     </tooltip>
                 </ComboBox>
-                <Separator orientation="VERTICAL"/>
+            </ToolBar>
+            <HBox styleClass="main-toolbar,trailing-actions" alignment="CENTER_LEFT"
+                  minWidth="-Infinity">
                 <Button fx:id="btnSign" text="%jfx.gui.toolbar.sign" onAction="#onSign"
                         styleClass="toolbar-button,sign-button">
                     <graphic><ImageView fitWidth="26" fitHeight="26" preserveRatio="true">
@@ -146,13 +154,14 @@
                 <Button fx:id="btnTimestamp" text="%jfx.gui.toolbar.timestamp" onAction="#onTimestamp"
                         styleClass="toolbar-button">
                     <graphic><ImageView fitWidth="26" fitHeight="26" preserveRatio="true">
-                        <Image url="@/net/sf/jsignpdf/clock26.png"/>
+                        <Image url="@/net/sf/jsignpdf/timestamp26.png"/>
                     </ImageView></graphic>
                     <tooltip>
                         <Tooltip text="%jfx.gui.toolbar.timestamp.tooltip"/>
                     </tooltip>
                 </Button>
-            </ToolBar>
+            </HBox>
+            </HBox>
         </VBox>
     </top>
 

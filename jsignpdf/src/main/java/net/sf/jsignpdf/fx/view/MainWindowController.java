@@ -239,6 +239,7 @@ public class MainWindowController {
      * Called on window close.
      */
     public void storeAndCleanup() {
+        saveViewStateToConfig();
         try {
             if (options == null) {
                 options = new BasicSignerOptions();
@@ -419,7 +420,10 @@ public class MainWindowController {
 
         // Zoom level changes update combo and remember the last zoom (persisted on document open / exit)
         documentVM.zoomLevelProperty().addListener((obs, oldVal, newVal) -> {
-            lastZoomLevel = newVal.doubleValue();
+            // Only track a real user zoom; ignore the reset-to-1.0 that documentVM.reset() fires on close.
+            if (documentVM.isDocumentLoaded()) {
+                lastZoomLevel = newVal.doubleValue();
+            }
             String formatted = Math.round(newVal.doubleValue() * 100) + "%";
             if (!formatted.equals(cmbZoom.getValue())) {
                 cmbZoom.setValue(formatted);

@@ -194,17 +194,17 @@ public class FxTranslationsTest {
         for (Locale locale : TEST_LOCALES) {
             ResourceBundle bundle = ResourceBundle.getBundle(BUNDLE_BASE, locale);
             BorderPane root = (BorderPane) loadFxml("/net/sf/jsignpdf/fx/view/MainWindow.fxml", bundle);
-            ToolBar toolBar = getToolBar(root);
+            List<Node> toolBarItems = getToolBarItems(root);
 
             // First item is the Open button
-            Button openBtn = (Button) toolBar.getItems().get(0);
+            Button openBtn = (Button) toolBarItems.get(0);
             assertEquals("Open button for " + locale,
                     bundle.getString("jfx.gui.toolbar.open"), openBtn.getText());
 
             // The Sign and Timestamp action buttons (both plain Buttons, not ToggleButtons)
             // are present with translated text, Sign before Timestamp.
             List<String> actionButtonTexts = new ArrayList<>();
-            for (Node n : toolBar.getItems()) {
+            for (Node n : toolBarItems) {
                 if (n instanceof Button && !(n instanceof ToggleButton)) {
                     actionButtonTexts.add(((Button) n).getText());
                 }
@@ -220,18 +220,18 @@ public class FxTranslationsTest {
             // signature + TSA), each with a translated tooltip.
             String expectedVisibleTip = bundle.getString("jfx.gui.toolbar.visibleSig.tooltip");
             String expectedTsaTip = bundle.getString("jfx.gui.toolbar.tsa.tooltip");
-            long toggleCount = toolBar.getItems().stream()
+            long toggleCount = toolBarItems.stream()
                     .filter(n -> n instanceof ToggleButton)
                     .count();
             assertEquals("Two toolbar ToggleButtons expected for " + locale, 2L, toggleCount);
 
-            boolean foundVisibleTip = toolBar.getItems().stream()
+            boolean foundVisibleTip = toolBarItems.stream()
                     .filter(n -> n instanceof ToggleButton)
                     .map(n -> ((ToggleButton) n).getTooltip())
                     .filter(t -> t != null)
                     .map(Tooltip::getText)
                     .anyMatch(expectedVisibleTip::equals);
-            boolean foundTsaTip = toolBar.getItems().stream()
+            boolean foundTsaTip = toolBarItems.stream()
                     .filter(n -> n instanceof ToggleButton)
                     .map(n -> ((ToggleButton) n).getTooltip())
                     .filter(t -> t != null)
@@ -438,9 +438,20 @@ public class FxTranslationsTest {
         return (MenuBar) topBox.getChildren().get(0);
     }
 
-    private ToolBar getToolBar(BorderPane root) {
+    /** Controls of the toolbar row in visual order: the left ToolBar's items followed by the
+        trailing action group's children (Sign / Timestamp live in a plain HBox, not a ToolBar). */
+    private List<Node> getToolBarItems(BorderPane root) {
         VBox topBox = (VBox) root.getTop();
-        return (ToolBar) topBox.getChildren().get(1);
+        HBox toolbarRow = (HBox) topBox.getChildren().get(1);
+        List<Node> items = new ArrayList<>();
+        for (Node bar : toolbarRow.getChildren()) {
+            if (bar instanceof ToolBar) {
+                items.addAll(((ToolBar) bar).getItems());
+            } else if (bar instanceof Parent) {
+                items.addAll(((Parent) bar).getChildrenUnmodifiable());
+            }
+        }
+        return items;
     }
 
     private Accordion getAccordion(BorderPane root) {

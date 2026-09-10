@@ -8,9 +8,18 @@
 }
 
 /* Toolbar */
+.main-toolbar-row {
+    -fx-background-color: linear-gradient(to bottom, derive(-fx-base, 20%), -fx-base);
+    -fx-border-color: transparent transparent #c8c8c8 transparent;
+    -fx-border-width: 0 0 1 0;
+}
+
 .main-toolbar {
     -fx-padding: 4 8 4 8;
     -fx-spacing: 4;
+    -fx-background-color: transparent;
+    -fx-background-insets: 0;
+    -fx-border-width: 0;
 }
 
 .toolbar-button {

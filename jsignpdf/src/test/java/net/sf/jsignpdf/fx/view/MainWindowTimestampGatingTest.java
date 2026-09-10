@@ -16,7 +16,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.ToolBar;
+import javafx.scene.Parent;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
 import org.junit.BeforeClass;
@@ -49,9 +51,9 @@ public class MainWindowTimestampGatingTest {
     public void timestampControlsAreBoundAndSignControlsAreNot() throws Exception {
         runOnFxThread(() -> {
             BorderPane root = loadMainWindow();
-            ToolBar toolBar = (ToolBar) ((VBox) root.getTop()).getChildren().get(1);
-            Button btnTimestamp = toolbarButton(toolBar, "btnTimestamp");
-            Button btnSign = toolbarButton(toolBar, "btnSign");
+            HBox toolbarRow = (HBox) ((VBox) root.getTop()).getChildren().get(1);
+            Button btnTimestamp = toolbarButton(toolbarRow, "btnTimestamp");
+            Button btnSign = toolbarButton(toolbarRow, "btnSign");
             assertNotNull("the toolbar must carry the timestamp button", btnTimestamp);
             assertNotNull(btnSign);
 
@@ -70,8 +72,11 @@ public class MainWindowTimestampGatingTest {
         });
     }
 
-    private static Button toolbarButton(ToolBar toolBar, String id) {
-        return toolBar.getItems().stream()
+    private static Button toolbarButton(HBox toolbarRow, String id) {
+        return toolbarRow.getChildren().stream()
+                .flatMap(bar -> bar instanceof ToolBar
+                        ? ((ToolBar) bar).getItems().stream()
+                        : ((Parent) bar).getChildrenUnmodifiable().stream())
                 .filter(node -> node instanceof Button && id.equals(node.getId()))
                 .map(Button.class::cast)
                 .findFirst().orElse(null);
