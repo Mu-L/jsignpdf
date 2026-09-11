@@ -223,11 +223,18 @@ final class SignaturePreviewPane extends Pane {
         Font fxFont = createFxFont(fontPx);
         List<String> lines = wrapForOpenPdf(text, maxWidthPt, fontPt);
 
-        // PdfSignatureAppearance -> ColumnText.setSimpleColumn(..., leading=fontSize).
-        // First baseline is one leading below the top, then advances by exactly
-        // one leading for every row.
+        // OpenPDF's ColumnText draws line N (1-based, blank lines counted) only while N*fontSize fits the rectangle; match it in PDF points so the preview never shows a line the signed PDF clips.
+        double rectHeightPt = overridePointHeight > 0.5 ? overridePointHeight
+                : signingVM.positionURYProperty().get() - signingVM.positionLLYProperty().get();
+        boolean clipByHeight = rectHeightPt > 0.5;
         double baseline = fontPx;
+        int lineIndex = 0;
         for (String line : lines) {
+            if (clipByHeight) {
+                if ((lineIndex + 1) * fontPt > rectHeightPt + 1e-4) break;
+            } else if (baseline - fontPx > height + fontPx) {
+                break;
+            }
             if (!line.isEmpty()) {
                 Text node = new Text(line);
                 node.setMouseTransparent(true);
@@ -239,7 +246,7 @@ final class SignaturePreviewPane extends Pane {
                 textPane.getChildren().add(node);
             }
             baseline += fontPx;
-            if (baseline - fontPx > height + fontPx) break;
+            lineIndex++;
         }
     }
 
